@@ -1,0 +1,39 @@
+
+print("Please enter the student's ID: ", terminator: "")
+if let studentID = readLine() {
+
+    var marksTotal: Double = 0.0
+    var marksCount: Int = 0
+    print("---")
+    print("Enter marks for student \(studentID).")
+    print("Type -999 and press Enter when you are finished.")
+    print("---")
+
+    while true {
+        print("Enter mark: ", terminator: "")
+        if let inputString = readLine(), let mark = Double(inputString) {
+            if mark == -999 {
+                break
+            }
+            marksTotal += mark
+            marksCount += 1
+        } else {
+            print("Invalid input. Please enter a valid number.")
+        }
+    }
+
+    print("\n--- Results ---")
+    print("Student ID: \(studentID)")
+
+    if marksCount > 0 {
+        let average = marksTotal / Double(marksCount)
+        let roundedAverage = (average * 100).rounded() / 100
+        print("Average Marks: \(roundedAverage)")
+    } else {
+        print("No marks were entered.")
+    }
+    print("---------------")
+
+} else {
+    print("Could not read student ID.")
+}

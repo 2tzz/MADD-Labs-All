@@ -1,0 +1,28 @@
+
+var firstname: String? = "Thilakshana"
+var lastname: String? = "Weerasinghe"
+
+print("--- Force Unwrapping ---")
+print("Full Name: \(firstname!) \(lastname!)")
+
+
+
+var studentFirstName: String? = "John"
+var studentLastName: String? = "Appleseed"
+print("--- Optional Binding (Both names valid) ---")
+if let fName = studentFirstName, let lName = studentLastName {
+    print("Student's Full Name: \(fName) \(lName)")
+} else {
+    print("One or both names were nil, could not print the full name.")
+}
+
+
+studentFirstName = nil
+if let fName = studentFirstName, let lName = studentLastName {
+    print("Student's Full Name: \(fName) \(lName)")
+} else {
+    print("at least one name is nil.")
+    if let validLastName = studentLastName {
+        print("The valid name is: \(validLastName)")
+    }
+}

@@ -1,0 +1,40 @@
+let studentGPAs: [String: [Double]] = [
+    "Amara Silva": [3.1, 3.5, 3.8, 3.9],     
+    "Bhanu Perera": [2.8, 3.0, 3.4, 3.5],      
+    "Chathura Fonseka": [2.5, 2.9, 3.1, 3.2], 
+    "Dilani Jayasuriya": [2.2, 2.5, 2.8, 2.9],  
+    "Eshan Bandara": [1.8, 1.9, 2.0, 1.9],     
+    "Invalid Student": [3.0, 3.5, 4.0]       
+]
+
+print("--- SLIIT Graduating Class Calculator ---\n")
+
+
+for (studentName, gpas) in studentGPAs {
+    guard gpas.count == 4 else {
+        print("Student: \(studentName)")
+        print("Error: Invalid data. Student must have 4 yearly GPAs. Skipping.")
+        print("----------------------------------------\n")
+        continue 
+    }
+    let wgpa = (gpas[0] * 0.0) + (gpas[1] * 0.2) + (gpas[2] * 0.3) + (gpas[3] * 0.5)
+    let roundedWGPA = (wgpa * 100).rounded() / 100
+
+    var studentClass: String
+    if wgpa >= 3.70 {
+        studentClass = "First Class Honours"
+    } else if wgpa >= 3.30 {
+        studentClass = "Second Class (Upper Division) Honours"
+    } else if wgpa >= 3.00 {
+        studentClass = "Second Class (Lower Division) Honours"
+    } else if wgpa >= 2.00 {
+        studentClass = "Pass"
+    } else {
+        studentClass = "No Award - WGPA is below passing grade."
+    }
+
+    print("Student: \(studentName)")
+    print("Weighted GPA (WGPA): \(roundedWGPA)")
+    print("Result: \(studentClass)")
+
+}
